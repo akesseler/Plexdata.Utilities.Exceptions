@@ -1,0 +1,45 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+    <GenerateDocumentationFile>True</GenerateDocumentationFile>
+    <DocumentationFile>.\bin\Plexdata.Utilities.Exceptions.xml</DocumentationFile>
+    <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
+    <Title></Title>
+    <Version>1.0.0</Version>
+    <Authors>plexdata.de</Authors>
+    <Company>plexdata.de</Company>
+    <Copyright>Copyright © 2024 - plexdata.de</Copyright>
+    <PackageProjectUrl>https://github.com/akesseler/Plexdata.Utilities.Exceptions</PackageProjectUrl>
+    <PackageIcon>icon.png</PackageIcon>
+    <PackageReadmeFile>publish-readme.md</PackageReadmeFile>
+    <PackageTags>exception extension throw validation valide verify verification</PackageTags>
+    <PackageReleaseNotes>See project history under https://github.com/akesseler/Plexdata.Utilities.Exceptions/blob/master/code/src/HISTORY.md</PackageReleaseNotes>
+    <PackageLicenseFile>LICENSE.md</PackageLicenseFile>
+    <Description>This library provides a number of extension methods that allow standard checks such as null check, empty check, range check an so on, do be done in one single line of code.</Description>
+    <RepositoryUrl>https://github.com/akesseler/Plexdata.Utilities.Exceptions</RepositoryUrl>
+    <RepositoryType>git</RepositoryType>
+    <AssemblyVersion>1.0.0</AssemblyVersion>
+    <FileVersion>1.0.0</FileVersion>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Include="..\..\..\icon.png">
+      <Pack>True</Pack>
+      <PackagePath>\</PackagePath>
+    </None>
+    <None Include="..\..\..\LICENSE.md">
+      <Pack>True</Pack>
+      <PackagePath>\</PackagePath>
+    </None>
+    <None Include="..\publish-readme.md">
+      <Pack>True</Pack>
+      <PackagePath>\</PackagePath>
+    </None>
+  </ItemGroup>
+
+  <Target Name="PostBuild" AfterTargets="PostBuildEvent">
+    <Exec Command="&quot;$(SolutionDir)post-build.cmd&quot; &quot;$(SolutionDir)..\hlp\&quot; $(ConfigurationName) &quot;$(SolutionDir)..\hlp\help\*.chm&quot; &quot;$(TargetDir)&quot;" />
+  </Target>
+
+</Project>
