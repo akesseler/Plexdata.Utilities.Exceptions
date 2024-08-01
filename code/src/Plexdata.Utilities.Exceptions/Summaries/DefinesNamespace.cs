@@ -25,7 +25,7 @@
 namespace Plexdata.Utilities.Exceptions.Defines
 {
     /// <summary>
-    /// The <see cref="Plexdata.Utilities.Exceptions.Defines"/> contains classes and definitions for internal use.
+    /// The <see cref="Plexdata.Utilities.Exceptions.Defines"/> namespace contains classes and definitions for internal use.
     /// </summary>
     /// <remarks>
     /// All classes in this namespace are for internal use only and should not be used directly.

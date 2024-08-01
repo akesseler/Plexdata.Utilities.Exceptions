@@ -39,11 +39,11 @@ namespace Plexdata.Utilities.Exceptions.Tests.Extensions
         public void ThrowIfNotVerified_DefaultOverloadWithoutOtherArgumentsAndSimpleObjectIsNullAndVerifierIsNull_ThrowsArgumentVerifyException()
         {
             Object actual = null;
-            Func<Boolean> verifyer = null;
+            Func<Boolean> verifier = null;
 
             ArgumentVerifyException reference = new ArgumentVerifyException();
 
-            Assert.That(() => actual.ThrowIfNotVerified(() => verifyer()),
+            Assert.That(() => actual.ThrowIfNotVerified(() => verifier()),
                 Throws.InstanceOf<ArgumentVerifyException>()
                     .And.Message.StartsWith(reference.Message)
                     .And.Property("ParamName").EqualTo(null));
@@ -53,11 +53,11 @@ namespace Plexdata.Utilities.Exceptions.Tests.Extensions
         public void ThrowIfNotVerified_ExceptionOverloadWithoutOtherArgumentsAndSimpleObjectIsNullAndVerifierIsNull_ThrowsAnyOtherException()
         {
             Object actual = null;
-            Func<Boolean> verifyer = null;
+            Func<Boolean> verifier = null;
 
             Exception reference = new Exception();
 
-            Assert.That(() => actual.ThrowIfNotVerified<Exception>(() => verifyer()),
+            Assert.That(() => actual.ThrowIfNotVerified<Exception>(() => verifier()),
                 Throws.InstanceOf<Exception>()
                     .And.Message.EqualTo(reference.Message));
         }
@@ -66,25 +66,25 @@ namespace Plexdata.Utilities.Exceptions.Tests.Extensions
         public void ThrowIfNotVerified_DefaultOverloadWithoutOtherArgumentsAndSimpleObjectIsValidAndVerifierIsNull_ThrowsArgumentVerifyException()
         {
             Object actual = new Object();
-            Func<Boolean> verifyer = null;
+            Func<Boolean> verifier = null;
 
             NullReferenceException reference = new NullReferenceException();
 
-            Assert.That(() => actual.ThrowIfNotVerified(() => verifyer()),
+            Assert.That(() => actual.ThrowIfNotVerified(() => verifier()),
                 Throws.InstanceOf<ArgumentVerifyException>()
                     .And.Message.StartsWith(reference.Message)
-                    .And.Property("ParamName").EqualTo(nameof(verifyer)));
+                    .And.Property("ParamName").EqualTo(nameof(verifier)));
         }
 
         [Test]
         public void ThrowIfNotVerified_ExceptionOverloadWithoutOtherArgumentsAndSimpleObjectIsValidAndVerifierIsNull_ThrowsAnyOtherException()
         {
             Object actual = new Object();
-            Func<Boolean> verifyer = null;
+            Func<Boolean> verifier = null;
 
             NullReferenceException reference = new NullReferenceException();
 
-            Assert.That(() => actual.ThrowIfNotVerified<Exception>(() => verifyer()),
+            Assert.That(() => actual.ThrowIfNotVerified<Exception>(() => verifier()),
                 Throws.InstanceOf<Exception>()
                     .And.Message.EqualTo(reference.Message));
         }
@@ -93,11 +93,11 @@ namespace Plexdata.Utilities.Exceptions.Tests.Extensions
         public void ThrowIfNotVerified_DefaultOverloadWithoutOtherArgumentsAndSimpleObjectIsNullAndVerifierReturnsAnyResult_ThrowsArgumentVerifyException([Values(true, false)] Boolean result)
         {
             Object actual = null;
-            Func<Boolean> verifyer = delegate { return result; };
+            Func<Boolean> verifier = delegate { return result; };
 
             ArgumentVerifyException reference = new ArgumentVerifyException();
 
-            Assert.That(() => actual.ThrowIfNotVerified(() => verifyer()),
+            Assert.That(() => actual.ThrowIfNotVerified(() => verifier()),
                 Throws.InstanceOf<ArgumentVerifyException>()
                     .And.Message.StartsWith(reference.Message)
                     .And.Property("ParamName").EqualTo(null));
@@ -107,11 +107,11 @@ namespace Plexdata.Utilities.Exceptions.Tests.Extensions
         public void ThrowIfNotVerified_ExceptionOverloadWithoutOtherArgumentsAndSimpleObjectIsNullAndVerifierReturnsAnyResult_ThrowsAnyOtherException([Values(true, false)] Boolean result)
         {
             Object actual = null;
-            Func<Boolean> verifyer = delegate { return result; };
+            Func<Boolean> verifier = delegate { return result; };
 
             Exception reference = new Exception();
 
-            Assert.That(() => actual.ThrowIfNotVerified<Exception>(() => verifyer()),
+            Assert.That(() => actual.ThrowIfNotVerified<Exception>(() => verifier()),
                 Throws.InstanceOf<Exception>()
                     .And.Message.EqualTo(reference.Message));
         }
@@ -120,11 +120,11 @@ namespace Plexdata.Utilities.Exceptions.Tests.Extensions
         public void ThrowIfNotVerified_DefaultOverloadWithoutOtherArgumentsAndSimpleObjectIsValidAndVerifierReturnsFalse_ThrowsArgumentVerifyException()
         {
             Object actual = new Object();
-            Func<Boolean> verifyer = delegate { return false; };
+            Func<Boolean> verifier = delegate { return false; };
 
             ArgumentVerifyException reference = new ArgumentVerifyException();
 
-            Assert.That(() => actual.ThrowIfNotVerified(() => verifyer()),
+            Assert.That(() => actual.ThrowIfNotVerified(() => verifier()),
                 Throws.InstanceOf<ArgumentVerifyException>()
                     .And.Message.StartsWith(reference.Message)
                     .And.Property("ParamName").EqualTo(null));
@@ -134,11 +134,11 @@ namespace Plexdata.Utilities.Exceptions.Tests.Extensions
         public void ThrowIfNotVerified_ExceptionOverloadWithoutOtherArgumentsAndSimpleObjectIsValidAndVerifierReturnsFalse_ThrowsAnyOtherException()
         {
             Object actual = new Object();
-            Func<Boolean> verifyer = delegate { return false; };
+            Func<Boolean> verifier = delegate { return false; };
 
             Exception reference = new Exception();
 
-            Assert.That(() => actual.ThrowIfNotVerified<Exception>(() => verifyer()),
+            Assert.That(() => actual.ThrowIfNotVerified<Exception>(() => verifier()),
                 Throws.InstanceOf<Exception>()
                     .And.Message.EqualTo(reference.Message));
         }
@@ -147,22 +147,22 @@ namespace Plexdata.Utilities.Exceptions.Tests.Extensions
         public void ThrowIfNotVerified_DefaultOverloadWithoutOtherArgumentsAndSimpleObjectIsValidAndVerifierReturnsTrue_ThrowsNothing()
         {
             Object actual = new Object();
-            Func<Boolean> verifyer = delegate { return true; };
+            Func<Boolean> verifier = delegate { return true; };
 
             ArgumentVerifyException reference = new ArgumentVerifyException();
 
-            Assert.That(() => actual.ThrowIfNotVerified(() => verifyer()), Throws.Nothing);
+            Assert.That(() => actual.ThrowIfNotVerified(() => verifier()), Throws.Nothing);
         }
 
         [Test]
         public void ThrowIfNotVerified_ExceptionOverloadWithoutOtherArgumentsAndSimpleObjectIsValidAndVerifierReturnsTrue_ThrowsNothing()
         {
             Object actual = new Object();
-            Func<Boolean> verifyer = delegate { return true; };
+            Func<Boolean> verifier = delegate { return true; };
 
             Exception reference = new Exception();
 
-            Assert.That(() => actual.ThrowIfNotVerified<Exception>(() => verifyer()), Throws.Nothing);
+            Assert.That(() => actual.ThrowIfNotVerified<Exception>(() => verifier()), Throws.Nothing);
         }
 
         [Test]
@@ -313,11 +313,11 @@ namespace Plexdata.Utilities.Exceptions.Tests.Extensions
         public void ThrowIfNotVerified_DefaultOverloadWithParameterOnlyAndSimpleObjectIsNullAndVerifierIsNull_ThrowsArgumentVerifyException()
         {
             Object actual = null;
-            Func<Boolean> verifyer = null;
+            Func<Boolean> verifier = null;
 
             ArgumentVerifyException reference = new ArgumentVerifyException();
 
-            Assert.That(() => actual.ThrowIfNotVerified(() => verifyer(), "parameter"),
+            Assert.That(() => actual.ThrowIfNotVerified(() => verifier(), "parameter"),
                 Throws.InstanceOf<ArgumentVerifyException>()
                     .And.Message.StartsWith(reference.Message)
                     .And.Property("ParamName").EqualTo("parameter"));
@@ -327,11 +327,11 @@ namespace Plexdata.Utilities.Exceptions.Tests.Extensions
         public void ThrowIfNotVerified_ExceptionOverloadWithParameterOnlyAndSimpleObjectIsNullAndVerifierIsNull_ThrowsAnyOtherException()
         {
             Object actual = null;
-            Func<Boolean> verifyer = null;
+            Func<Boolean> verifier = null;
 
             Exception reference = new Exception("parameter");
 
-            Assert.That(() => actual.ThrowIfNotVerified<Exception>(() => verifyer(), "parameter"),
+            Assert.That(() => actual.ThrowIfNotVerified<Exception>(() => verifier(), "parameter"),
                 Throws.InstanceOf<Exception>()
                     .And.Message.EqualTo(reference.Message));
         }
@@ -340,25 +340,25 @@ namespace Plexdata.Utilities.Exceptions.Tests.Extensions
         public void ThrowIfNotVerified_DefaultOverloadWithParameterOnlyAndSimpleObjectIsValidAndVerifierIsNull_ThrowsArgumentVerifyException()
         {
             Object actual = new Object();
-            Func<Boolean> verifyer = null;
+            Func<Boolean> verifier = null;
 
             NullReferenceException reference = new NullReferenceException();
 
-            Assert.That(() => actual.ThrowIfNotVerified(() => verifyer(), "parameter"),
+            Assert.That(() => actual.ThrowIfNotVerified(() => verifier(), "parameter"),
                 Throws.InstanceOf<ArgumentVerifyException>()
                     .And.Message.StartsWith(reference.Message)
-                    .And.Property("ParamName").EqualTo(nameof(verifyer)));
+                    .And.Property("ParamName").EqualTo(nameof(verifier)));
         }
 
         [Test]
         public void ThrowIfNotVerified_ExceptionOverloadWithParameterOnlyAndSimpleObjectIsValidAndVerifierIsNull_ThrowsAnyOtherException()
         {
             Object actual = new Object();
-            Func<Boolean> verifyer = null;
+            Func<Boolean> verifier = null;
 
             NullReferenceException reference = new NullReferenceException();
 
-            Assert.That(() => actual.ThrowIfNotVerified<Exception>(() => verifyer(), "parameter"),
+            Assert.That(() => actual.ThrowIfNotVerified<Exception>(() => verifier(), "parameter"),
                 Throws.InstanceOf<Exception>()
                     .And.Message.EqualTo(reference.Message));
         }
@@ -367,11 +367,11 @@ namespace Plexdata.Utilities.Exceptions.Tests.Extensions
         public void ThrowIfNotVerified_DefaultOverloadWithParameterOnlyAndSimpleObjectIsNullAndVerifierReturnsAnyResult_ThrowsArgumentVerifyException([Values(true, false)] Boolean result)
         {
             Object actual = null;
-            Func<Boolean> verifyer = delegate { return result; };
+            Func<Boolean> verifier = delegate { return result; };
 
             ArgumentVerifyException reference = new ArgumentVerifyException();
 
-            Assert.That(() => actual.ThrowIfNotVerified(() => verifyer(), "parameter"),
+            Assert.That(() => actual.ThrowIfNotVerified(() => verifier(), "parameter"),
                 Throws.InstanceOf<ArgumentVerifyException>()
                     .And.Message.StartsWith(reference.Message)
                     .And.Property("ParamName").EqualTo("parameter"));
@@ -381,11 +381,11 @@ namespace Plexdata.Utilities.Exceptions.Tests.Extensions
         public void ThrowIfNotVerified_ExceptionOverloadWithParameterOnlyAndSimpleObjectIsNullAndVerifierReturnsAnyResult_ThrowsAnyOtherException([Values(true, false)] Boolean result)
         {
             Object actual = null;
-            Func<Boolean> verifyer = delegate { return result; };
+            Func<Boolean> verifier = delegate { return result; };
 
             Exception reference = new Exception("parameter");
 
-            Assert.That(() => actual.ThrowIfNotVerified<Exception>(() => verifyer(), "parameter"),
+            Assert.That(() => actual.ThrowIfNotVerified<Exception>(() => verifier(), "parameter"),
                 Throws.InstanceOf<Exception>()
                     .And.Message.EqualTo(reference.Message));
         }
@@ -394,11 +394,11 @@ namespace Plexdata.Utilities.Exceptions.Tests.Extensions
         public void ThrowIfNotVerified_DefaultOverloadWithParameterOnlyAndSimpleObjectIsValidAndVerifierReturnsFalse_ThrowsArgumentVerifyException()
         {
             Object actual = new Object();
-            Func<Boolean> verifyer = delegate { return false; };
+            Func<Boolean> verifier = delegate { return false; };
 
             ArgumentVerifyException reference = new ArgumentVerifyException();
 
-            Assert.That(() => actual.ThrowIfNotVerified(() => verifyer(), "parameter"),
+            Assert.That(() => actual.ThrowIfNotVerified(() => verifier(), "parameter"),
                 Throws.InstanceOf<ArgumentVerifyException>()
                     .And.Message.StartsWith(reference.Message)
                     .And.Property("ParamName").EqualTo("parameter"));
@@ -408,11 +408,11 @@ namespace Plexdata.Utilities.Exceptions.Tests.Extensions
         public void ThrowIfNotVerified_ExceptionOverloadWithParameterOnlyAndSimpleObjectIsValidAndVerifierReturnsFalse_ThrowsAnyOtherException()
         {
             Object actual = new Object();
-            Func<Boolean> verifyer = delegate { return false; };
+            Func<Boolean> verifier = delegate { return false; };
 
             Exception reference = new Exception("parameter");
 
-            Assert.That(() => actual.ThrowIfNotVerified<Exception>(() => verifyer(), "parameter"),
+            Assert.That(() => actual.ThrowIfNotVerified<Exception>(() => verifier(), "parameter"),
                 Throws.InstanceOf<Exception>()
                     .And.Message.EqualTo(reference.Message));
         }
@@ -421,22 +421,22 @@ namespace Plexdata.Utilities.Exceptions.Tests.Extensions
         public void ThrowIfNotVerified_DefaultOverloadWithParameterOnlyAndSimpleObjectIsValidAndVerifierReturnsTrue_ThrowsNothing()
         {
             Object actual = new Object();
-            Func<Boolean> verifyer = delegate { return true; };
+            Func<Boolean> verifier = delegate { return true; };
 
             ArgumentVerifyException reference = new ArgumentVerifyException();
 
-            Assert.That(() => actual.ThrowIfNotVerified(() => verifyer(), "parameter"), Throws.Nothing);
+            Assert.That(() => actual.ThrowIfNotVerified(() => verifier(), "parameter"), Throws.Nothing);
         }
 
         [Test]
         public void ThrowIfNotVerified_ExceptionOverloadWithParameterOnlyAndSimpleObjectIsValidAndVerifierReturnsTrue_ThrowsNothing()
         {
             Object actual = new Object();
-            Func<Boolean> verifyer = delegate { return true; };
+            Func<Boolean> verifier = delegate { return true; };
 
             Exception reference = new Exception();
 
-            Assert.That(() => actual.ThrowIfNotVerified<Exception>(() => verifyer(), "parameter"), Throws.Nothing);
+            Assert.That(() => actual.ThrowIfNotVerified<Exception>(() => verifier(), "parameter"), Throws.Nothing);
         }
 
         [Test]
@@ -587,9 +587,9 @@ namespace Plexdata.Utilities.Exceptions.Tests.Extensions
         public void ThrowIfNotVerified_DefaultOverloadWithParameterAndMessageAndSimpleObjectIsNullAndVerifierIsNull_ThrowsArgumentVerifyException()
         {
             Object actual = null;
-            Func<Boolean> verifyer = null;
+            Func<Boolean> verifier = null;
 
-            Assert.That(() => actual.ThrowIfNotVerified(() => verifyer(), "parameter", "message"),
+            Assert.That(() => actual.ThrowIfNotVerified(() => verifier(), "parameter", "message"),
                 Throws.InstanceOf<ArgumentVerifyException>()
                     .And.Message.StartsWith("message")
                     .And.Property("ParamName").EqualTo("parameter"));
@@ -599,11 +599,11 @@ namespace Plexdata.Utilities.Exceptions.Tests.Extensions
         public void ThrowIfNotVerified_ExceptionOverloadWithParameterAndMessageAndSimpleObjectIsNullAndVerifierIsNull_ThrowsAnyOtherException()
         {
             Object actual = null;
-            Func<Boolean> verifyer = null;
+            Func<Boolean> verifier = null;
 
             Exception reference = new Exception("message");
 
-            Assert.That(() => actual.ThrowIfNotVerified<Exception>(() => verifyer(), "parameter", "message"),
+            Assert.That(() => actual.ThrowIfNotVerified<Exception>(() => verifier(), "parameter", "message"),
                 Throws.InstanceOf<Exception>()
                     .And.Message.EqualTo(reference.Message));
         }
@@ -612,25 +612,25 @@ namespace Plexdata.Utilities.Exceptions.Tests.Extensions
         public void ThrowIfNotVerified_DefaultOverloadWithParameterAndMessageAndSimpleObjectIsValidAndVerifierIsNull_ThrowsArgumentVerifyException()
         {
             Object actual = new Object();
-            Func<Boolean> verifyer = null;
+            Func<Boolean> verifier = null;
 
             NullReferenceException reference = new NullReferenceException();
 
-            Assert.That(() => actual.ThrowIfNotVerified(() => verifyer(), "parameter", "message"),
+            Assert.That(() => actual.ThrowIfNotVerified(() => verifier(), "parameter", "message"),
                 Throws.InstanceOf<ArgumentVerifyException>()
                     .And.Message.StartsWith(reference.Message)
-                    .And.Property("ParamName").EqualTo(nameof(verifyer)));
+                    .And.Property("ParamName").EqualTo(nameof(verifier)));
         }
 
         [Test]
         public void ThrowIfNotVerified_ExceptionOverloadWithParameterAndMessageAndSimpleObjectIsValidAndVerifierIsNull_ThrowsAnyOtherException()
         {
             Object actual = new Object();
-            Func<Boolean> verifyer = null;
+            Func<Boolean> verifier = null;
 
             NullReferenceException reference = new NullReferenceException();
 
-            Assert.That(() => actual.ThrowIfNotVerified<Exception>(() => verifyer(), "parameter", "message"),
+            Assert.That(() => actual.ThrowIfNotVerified<Exception>(() => verifier(), "parameter", "message"),
                 Throws.InstanceOf<Exception>()
                     .And.Message.EqualTo(reference.Message));
         }
@@ -639,9 +639,9 @@ namespace Plexdata.Utilities.Exceptions.Tests.Extensions
         public void ThrowIfNotVerified_DefaultOverloadWithParameterAndMessageAndSimpleObjectIsNullAndVerifierReturnsAnyResult_ThrowsArgumentVerifyException([Values(true, false)] Boolean result)
         {
             Object actual = null;
-            Func<Boolean> verifyer = delegate { return result; };
+            Func<Boolean> verifier = delegate { return result; };
 
-            Assert.That(() => actual.ThrowIfNotVerified(() => verifyer(), "parameter", "message"),
+            Assert.That(() => actual.ThrowIfNotVerified(() => verifier(), "parameter", "message"),
                 Throws.InstanceOf<ArgumentVerifyException>()
                     .And.Message.StartsWith("message")
                     .And.Property("ParamName").EqualTo("parameter"));
@@ -651,11 +651,11 @@ namespace Plexdata.Utilities.Exceptions.Tests.Extensions
         public void ThrowIfNotVerified_ExceptionOverloadWithParameterAndMessageAndSimpleObjectIsNullAndVerifierReturnsAnyResult_ThrowsAnyOtherException([Values(true, false)] Boolean result)
         {
             Object actual = null;
-            Func<Boolean> verifyer = delegate { return result; };
+            Func<Boolean> verifier = delegate { return result; };
 
             Exception reference = new Exception("message");
 
-            Assert.That(() => actual.ThrowIfNotVerified<Exception>(() => verifyer(), "parameter", "message"),
+            Assert.That(() => actual.ThrowIfNotVerified<Exception>(() => verifier(), "parameter", "message"),
                 Throws.InstanceOf<Exception>()
                     .And.Message.EqualTo(reference.Message));
         }
@@ -664,9 +664,9 @@ namespace Plexdata.Utilities.Exceptions.Tests.Extensions
         public void ThrowIfNotVerified_DefaultOverloadWithParameterAndMessageAndSimpleObjectIsValidAndVerifierReturnsFalse_ThrowsArgumentVerifyException()
         {
             Object actual = new Object();
-            Func<Boolean> verifyer = delegate { return false; };
+            Func<Boolean> verifier = delegate { return false; };
 
-            Assert.That(() => actual.ThrowIfNotVerified(() => verifyer(), "parameter", "message"),
+            Assert.That(() => actual.ThrowIfNotVerified(() => verifier(), "parameter", "message"),
                 Throws.InstanceOf<ArgumentVerifyException>()
                     .And.Message.StartsWith("message")
                     .And.Property("ParamName").EqualTo("parameter"));
@@ -676,11 +676,11 @@ namespace Plexdata.Utilities.Exceptions.Tests.Extensions
         public void ThrowIfNotVerified_ExceptionOverloadWithParameterAndMessageAndSimpleObjectIsValidAndVerifierReturnsFalse_ThrowsAnyOtherException()
         {
             Object actual = new Object();
-            Func<Boolean> verifyer = delegate { return false; };
+            Func<Boolean> verifier = delegate { return false; };
 
             Exception reference = new Exception("message");
 
-            Assert.That(() => actual.ThrowIfNotVerified<Exception>(() => verifyer(), "parameter", "message"),
+            Assert.That(() => actual.ThrowIfNotVerified<Exception>(() => verifier(), "parameter", "message"),
                 Throws.InstanceOf<Exception>()
                     .And.Message.EqualTo(reference.Message));
         }
@@ -689,22 +689,22 @@ namespace Plexdata.Utilities.Exceptions.Tests.Extensions
         public void ThrowIfNotVerified_DefaultOverloadWithParameterAndMessageAndSimpleObjectIsValidAndVerifierReturnsTrue_ThrowsNothing()
         {
             Object actual = new Object();
-            Func<Boolean> verifyer = delegate { return true; };
+            Func<Boolean> verifier = delegate { return true; };
 
             ArgumentVerifyException reference = new ArgumentVerifyException();
 
-            Assert.That(() => actual.ThrowIfNotVerified(() => verifyer(), "parameter", "message"), Throws.Nothing);
+            Assert.That(() => actual.ThrowIfNotVerified(() => verifier(), "parameter", "message"), Throws.Nothing);
         }
 
         [Test]
         public void ThrowIfNotVerified_ExceptionOverloadWithParameterAndMessageAndSimpleObjectIsValidAndVerifierReturnsTrue_ThrowsNothing()
         {
             Object actual = new Object();
-            Func<Boolean> verifyer = delegate { return true; };
+            Func<Boolean> verifier = delegate { return true; };
 
             Exception reference = new Exception();
 
-            Assert.That(() => actual.ThrowIfNotVerified<Exception>(() => verifyer(), "parameter", "message"), Throws.Nothing);
+            Assert.That(() => actual.ThrowIfNotVerified<Exception>(() => verifier(), "parameter", "message"), Throws.Nothing);
         }
 
         [Test]

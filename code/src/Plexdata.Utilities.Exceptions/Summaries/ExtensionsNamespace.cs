@@ -25,15 +25,15 @@
 namespace Plexdata.Utilities.Exceptions.Extensions
 {
     /// <summary>
-    /// The <see cref="Plexdata.Utilities.Exceptions.Extensions"/> contains classes with extension methods.
+    /// The <see cref="Plexdata.Utilities.Exceptions.Extensions"/> namespace contains classes with extension methods.
     /// </summary>
     /// <remarks>
     /// All classes in this namespace provide a set of extension methods for public use. Such extension 
     /// methods are for example:
     /// <c>ThrowIfNull(...)</c>, 
+    /// <c>ThrowIfNotVerified(...)</c>, 
     /// <c>ThrowIfNullOrEmpty(...)</c>,
     /// <c>ThrowIfNullOrWhiteSpace(...)</c>, 
-    /// <c>ThrowIfNotVerified(...)</c>, 
     /// <c>ThrowIfLessThan(...)</c>, 
     /// <c>ThrowIfGreaterThan(...)</c>, 
     /// <c>ThrowIfOutOfRange(...)</c>, etc.
