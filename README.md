@@ -23,20 +23,20 @@ empty check, range check an so on, do be done in one single line of code.
 Each extension method comes with a set of overloads that allow users to control the type of thrown exception as well as 
 the exception message.
 
-Here is an overview of the existing extension methods that are provided by this package:
+Here an overview of the existing extension methods that are provided by this package (including their default exceptions, 
+thrown as needed):
 
-- Method `ThrowIfNull()` for any kind of object.
-- Method `ThrowIfNullOrEmpty()` especially for strings.
-- Method `ThrowIfNullOrWhiteSpace()` especially for strings.
-- Method `ThrowIfLessThan(minimum)` for number types such as `Int32`, `Double`, etc.
-- Method `ThrowIfGreaterThan(maximum)` for number types such as `Int32`, `Double`, etc.
-- Method `ThrowIfOutOfRange(minimum, maximum)` for number types such as `Int32`, `Double`, etc.
+- Method `ThrowIfNull()` is used for any kind of object and throws an `ArgumentNullException` if necessary.
+- Method `ThrowIfNotVerified(delegate)` is used for any kind of object with verification and throws an `ArgumentVerifyException` (defined in this package) if necessary.
+- Method `ThrowIfNullOrEmpty()` is used especially for strings and throws an `ArgumentOutOfRangeException` if necessary.
+- Method `ThrowIfNullOrWhiteSpace()` is used especially for strings and throws an `ArgumentOutOfRangeException` if necessary.
+- Method `ThrowIfLessThan(minimum)` is used for number types such as `Int32`, `Double`, etc. and throws an `ArgumentOutOfRangeException` if necessary.
+- Method `ThrowIfGreaterThan(maximum)` is used for number types such as `Int32`, `Double`, etc. and throws an `ArgumentOutOfRangeException` if necessary.
+- Method `ThrowIfOutOfRange(minimum, maximum)` is used for number types such as `Int32`, `Double`, etc. and throws an `ArgumentOutOfRangeException` if necessary.
 
 ### Examples
 
 #### General Usage
-
-This section shows basic examples that apply to all available extension methods.
 
 The simplest use of the extension methods is shown in this example.
 
@@ -75,15 +75,15 @@ public void Process(Data data)
 }
 ```
 
-#### Object Validation
+Keep in mind, all examples presented in this section can be applied to all extension methods.
 
-This section shows how to validate objects.
+#### Object Verification
 
 The first way to validate an object is to use `ThrowIfNull()`. Examples of this can be found above.
 
-Another possible use is the method `ThrowIfNotVerified()`. This makes it possible to execute an own validation callback.
+Another possible use is method `ThrowIfNotVerified()`. This makes it possible to execute an own verification callback.
 
-Suppose there exists a data model class that has the method `IsValid()`. In this case, extension method `ThrowIfNotVerified()` 
+Suppose there exists a data model class with a method called `IsValid()`. In this case, extension method `ThrowIfNotVerified()` 
 can be called as follows.
 
 ```
@@ -93,16 +93,16 @@ public void Process(Data data)
 }
 ```
 
-Please note that an extra null check is unnecessary, since `ThrowIfNull()` is already called internally.
+Please note, an extra null check is unnecessary, since `ThrowIfNull()` is called internally.
 
 It is also possible to use a property (such as `Boolean Valid { get; }`) instead of a method. Furthermore, the usage of an 
-independent validation callback (such as `Func<Boolean> validator = delegate { return true; };`) is possible as well.
+independent verification callback (such as `Func<Boolean> verifier = delegate { return true; };`) is possible as well.
 
 #### String Validation
 
-A String validation can be done in two different ways. These are the checks for null and empty and for null and white spaces.
+A string validation can be done in two different ways. These are the checks for null and empty and for null and white spaces.
 
-The null or empty check can be done by calling `ThrowIfNullOrEmpty()` as shown as next.
+The null or empty check can be done by calling `ThrowIfNullOrEmpty()` as shown next.
 
 ```
 public void Process(String name)
@@ -154,20 +154,8 @@ public void Process(Int32 value)
 }
 ```
 
-For value range checks, it should be noted that there is no internal validation that the minimum value is actually less than 
+For value range checks, it should be noted that there is no internal verification that the minimum value is actually less than 
 the maximum value. It is the calles responsibility to ensure that.
-
-#### Default Exceptions
-
-List below shows all default exceptions that are thrown if no other exception has been declared by the generic parameter.
-
-- Method `ThrowIfNull()` throws an `ArgumentNullException` if necessary.
-- Method `ThrowIfNullOrEmpty()` throws an `ArgumentOutOfRangeException` if necessary.
-- Method `ThrowIfNullOrWhiteSpace()` throws an `ArgumentOutOfRangeException` if necessary.
-- Method `ThrowIfNotVerified()` throws an `ArgumentVerifyException` (defined in this package) if necessary.
-- Method `ThrowIfLessThan()` throws an `ArgumentOutOfRangeException` if necessary.
-- Method `ThrowIfGreaterThan()` throws an `ArgumentOutOfRangeException` if necessary.
-- Method `ThrowIfOutOfRange()` throws an `ArgumentOutOfRangeException` if necessary.
 
 ### Framework
 
@@ -193,5 +181,3 @@ Using the parameter name only in combination with an exception (such as `Excepti
 as first argument, may lead in an unclear error message. This is because of this error message will become the parameter name. 
 Therefore, it is strictly recommended to use only exceptions that take a parameter name as first argument. This does not affect 
 the use of `ArgumentException`, as corresponding handling exist internally.
-
-
