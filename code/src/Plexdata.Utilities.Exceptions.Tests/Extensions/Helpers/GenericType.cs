@@ -1,4 +1,4 @@
-/*
+﻿/*
  * MIT License
  * 
  * Copyright (c) 2024 plexdata.de
@@ -22,14 +22,29 @@
  * SOFTWARE.
  */
 
-namespace Plexdata.Utilities.Exceptions.Helpers
+namespace Plexdata.Utilities.Exceptions.Tests.Extensions.Helpers
 {
-    /// <summary>
-    /// The <c>Plexdata.Utilities.Exceptions.Helpers</c> namespace contains all internal helper classes.
-    /// </summary>
-    /// <remarks>
-    /// All classes in this namespace are for internal use only and should not be used directly.
-    /// </remarks>
-    [System.Runtime.CompilerServices.CompilerGenerated]
-    class NamespaceDoc { }
+    public class GenericType<T> where T : IComparable<T>, IEquatable<T>
+    {
+        public GenericType(T value, T other)
+        {
+            this.Value = value;
+            this.Other = other;
+        }
+
+        public T Value { get; }
+        public T Other { get; }
+
+        public override String ToString()
+        {
+            // NOTE: Special treatment of CustomData is necessary...
+            //       because CustomData.ToString() can't be overwritten.
+            //       Otherwise the test of CustomData will not be executed
+            //       automatically!
+            return
+                $"{typeof(T).Name}: " +
+                $"Value={((this.Value is CustomData) ? (this.Value as CustomData).Value : this.Value)}, " +
+                $"Other={((this.Other is CustomData) ? (this.Other as CustomData).Value : this.Other)}";
+        }
+    }
 }

@@ -25,18 +25,29 @@
 namespace Plexdata.Utilities.Exceptions.Extensions
 {
     /// <summary>
-    /// The <see cref="Plexdata.Utilities.Exceptions.Extensions"/> namespace contains classes with extension methods.
+    /// The <c>Plexdata.Utilities.Exceptions.Extensions</c> namespace contains classes with extension methods to perform 
+    /// parameter checks.
     /// </summary>
     /// <remarks>
-    /// All classes in this namespace provide a set of extension methods for public use. Such extension 
-    /// methods are for example:
-    /// <c>ThrowIfNull(...)</c>, 
-    /// <c>ThrowIfNotVerified(...)</c>, 
-    /// <c>ThrowIfNullOrEmpty(...)</c>,
-    /// <c>ThrowIfNullOrWhiteSpace(...)</c>, 
-    /// <c>ThrowIfLessThan(...)</c>, 
-    /// <c>ThrowIfGreaterThan(...)</c>, 
-    /// <c>ThrowIfOutOfRange(...)</c>, etc.
+    /// <para>
+    /// All classes in this namespace export extension methods that can be used to perform different types of parameter checks. Each of the provided 
+    /// methods has an overload able to throw either the <i>standard exception</i> or a user-defined exception, if necessary. In addition, the name 
+    /// of the affected parameter as well as an error message can optionally be specified for each of these methods. Here is an overview of the exposed 
+    /// methods and the <i>standard exception</i> they use.
+    /// </para>
+    /// <list type="bullet">
+    /// <item><description><c>ThrowIfNull()</c> - Throws an <i>ArgumentNullException</i> or a user defined exception if needed.</description></item>
+    /// <item><description><c>ThrowIfNotVerified()</c> - Throws an <see cref="ArgumentVerifyException"/> or a user defined exception if needed.</description></item>
+    /// <item><description><c>ThrowIfNullOrEmpty()</c> - Throws an <i>ArgumentOutOfRangeException</i> or a user defined exception if needed.</description></item>
+    /// <item><description><c>ThrowIfNullOrWhiteSpace()</c> - Throws an <i>ArgumentOutOfRangeException</i> or a user defined exception if needed.</description></item>
+    /// <item><description><c>ThrowIfEqualTo()</c> - Throws an <i>ArgumentOutOfRangeException</i> or a user defined exception if needed.</description></item>
+    /// <item><description><c>ThrowIfNotEqualTo()</c> - Throws an <i>ArgumentOutOfRangeException</i> or a user defined exception if needed.</description></item>
+    /// <item><description><c>ThrowIfLessThan()</c> - Throws an <i>ArgumentOutOfRangeException</i> or a user defined exception if needed.</description></item>
+    /// <item><description><c>ThrowIfLessThanOrEqualTo()</c> - Throws an <i>ArgumentOutOfRangeException</i> or a user defined exception if needed.</description></item>
+    /// <item><description><c>ThrowIfGreaterThan()</c> - Throws an <i>ArgumentOutOfRangeException</i> or a user defined exception if needed.</description></item>
+    /// <item><description><c>ThrowIfGreaterThanOrEqualTo()</c> - Throws an <i>ArgumentOutOfRangeException</i> or a user defined exception if needed.</description></item>
+    /// <item><description><c>ThrowIfOutOfRange()</c> - Throws an <i>ArgumentOutOfRangeException</i> or a user defined exception if needed.</description></item>
+    /// </list>
     /// </remarks>
     [System.Runtime.CompilerServices.CompilerGenerated]
     class NamespaceDoc { }

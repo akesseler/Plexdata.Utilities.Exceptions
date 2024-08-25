@@ -6,7 +6,7 @@
     <DocumentationFile>.\bin\Plexdata.Utilities.Exceptions.xml</DocumentationFile>
     <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
     <Title></Title>
-    <Version>1.0.1</Version>
+    <Version>1.0.2</Version>
     <Authors>plexdata.de</Authors>
     <Company>plexdata.de</Company>
     <Copyright>Copyright © 2024 - plexdata.de</Copyright>
@@ -14,13 +14,19 @@
     <PackageIcon>icon.png</PackageIcon>
     <PackageReadmeFile>publish-readme.md</PackageReadmeFile>
     <PackageTags>exception extension throw validation valide verify verification</PackageTags>
-    <PackageReleaseNotes>See project history under https://github.com/akesseler/Plexdata.Utilities.Exceptions/blob/master/code/src/HISTORY.md</PackageReleaseNotes>
+    <PackageReleaseNotes>- Introduction of a series of new methods.
+- Data-type-based methods replaced by methods accepting values inheriting either from `IEquatable&lt;T&gt;` or from `IComparable&lt;T&gt;`.
+- The change of the result type from `void` to `TValue` for all methods.
+
+See project history under https://github.com/akesseler/Plexdata.Utilities.Exceptions/blob/master/code/src/HISTORY.md</PackageReleaseNotes>
     <PackageLicenseFile>LICENSE.md</PackageLicenseFile>
-    <Description>This library provides a number of extension methods that allow standard checks such as null check, empty check, range check an so on, do be done in one single line of code.</Description>
+    <Description>This library provides a number of extension methods that allow standard checks such as null check, empty check, range check an so on, do be done in one single line of code.
+
+Note, the latest version includes **breaking changes**.</Description>
     <RepositoryUrl>https://github.com/akesseler/Plexdata.Utilities.Exceptions</RepositoryUrl>
     <RepositoryType>git</RepositoryType>
-    <AssemblyVersion>1.0.1</AssemblyVersion>
-    <FileVersion>1.0.1</FileVersion>
+    <AssemblyVersion>1.0.2</AssemblyVersion>
+    <FileVersion>1.0.2</FileVersion>
   </PropertyGroup>
 
   <ItemGroup>
