@@ -22,7 +22,6 @@
  * SOFTWARE.
  */
 
-using Plexdata.Utilities.Exceptions.Defines;
 using System;
 using System.Diagnostics.CodeAnalysis;
 using System.Runtime.Serialization;
@@ -56,7 +55,7 @@ namespace Plexdata.Utilities.Exceptions
         /// </remarks>
         /// <seealso cref="DefaultMessage"/>
         public ArgumentVerifyException()
-            : this(Constants.NullString, ArgumentVerifyException.DefaultMessage, null)
+            : this(null, ArgumentVerifyException.DefaultMessage, null)
         {
         }
 
@@ -131,7 +130,7 @@ namespace Plexdata.Utilities.Exceptions
         /// An instance of an inner exception.
         /// </param>
         public ArgumentVerifyException(String parameter, String message, Exception exception)
-            : base(String.IsNullOrWhiteSpace(message) ? ArgumentVerifyException.DefaultMessage : message, String.IsNullOrWhiteSpace(parameter) ? Constants.NullString : parameter, exception)
+            : base(String.IsNullOrWhiteSpace(message) ? ArgumentVerifyException.DefaultMessage : message, String.IsNullOrWhiteSpace(parameter) ? null : parameter, exception)
         {
         }
 

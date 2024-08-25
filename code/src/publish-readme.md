@@ -1,19 +1,27 @@
 This library provides a number of extension methods that allow standard checks such as null check, empty check, 
 range check an so on, do be done in one single line of code.
 
-Each extension method comes with a set of overloads that allow users to control the type of thrown exception as 
-well as the exception message.
+Every extension method comes with a set of overloads that allow to control the name of affected parameter and the exception's 
+message as well as the type of the exception to be thrown.
 
-Here an overview of the existing extension methods that are provided by this package (including their default 
-exceptions, thrown as needed):
+Here is an overview of all existing extension methods that are provided by this package, including their default exceptions:
 
-- Method `ThrowIfNull()` is used for any kind of object and throws an `ArgumentNullException` if necessary.
-- Method `ThrowIfNotVerified(delegate)` is used for any kind of object with verification and throws an `ArgumentVerifyException` (defined in this package) if necessary.
-- Method `ThrowIfNullOrEmpty()` is used especially for strings and throws an `ArgumentOutOfRangeException` if necessary.
-- Method `ThrowIfNullOrWhiteSpace()` is used especially for strings and throws an `ArgumentOutOfRangeException` if necessary.
-- Method `ThrowIfLessThan(minimum)` is used for number types such as `Int32`, `Double`, etc. and throws an `ArgumentOutOfRangeException` if necessary.
-- Method `ThrowIfGreaterThan(maximum)` is used for number types such as `Int32`, `Double`, etc. and throws an `ArgumentOutOfRangeException` if necessary.
-- Method `ThrowIfOutOfRange(minimum, maximum)` is used for number types such as `Int32`, `Double`, etc. and throws an `ArgumentOutOfRangeException` if necessary.
+- Method `ThrowIfNull()` is used for any kind of null check and throws an `ArgumentNullException` as default.
+- Methods `ThrowIfNotVerified(delegate)` and `ThrowIfNotVerified(delegate(value))` are used for any kind of object 
+  validation and throw an `ArgumentVerifyException` as default.
+- Methods `ThrowIfNullOrEmpty()` and `ThrowIfNullOrWhiteSpace()` are used especially for string checks and throw 
+  an `ArgumentOutOfRangeException` as default.
+- Methods `ThrowIfEqualTo(other)` and `ThrowIfNotEqualTo(other)` are used for any kind of equal checks and throw an 
+  `ArgumentOutOfRangeException` as default.
+  - Note that these methods can only be used with types derived from `IEquatable<T>`.
+- Methods `ThrowIfLessThan(minimum)` and `ThrowIfLessThanOrEqualTo(minimum)` are used for lower limit checks and 
+  throw an `ArgumentOutOfRangeException` as default. 
+  - Note that these methods can only be used with types derived from `IComparable<T>`.
+- Methods `ThrowIfGreaterThan(maximum)` and `ThrowIfGreaterThanOrEqualTo(maximum)` are used for upper limit checks 
+  and throw an `ArgumentOutOfRangeException` as default. 
+  - Note that these methods can only be used with types derived from `IComparable<T>`.
+- Method `ThrowIfOutOfRange(minimum, maximum)` is used for range checks and throws an `ArgumentOutOfRangeException` as default. 
+  - Note that this method can only be used with types derived from `IComparable<T>`.
  
 The sources can be found on GitHub under [https://github.com/akesseler/Plexdata.Utilities.Exceptions](https://github.com/akesseler/Plexdata.Utilities.Exceptions).
 

@@ -1,4 +1,4 @@
-/*
+﻿/*
  * MIT License
  * 
  * Copyright (c) 2024 plexdata.de
@@ -22,14 +22,47 @@
  * SOFTWARE.
  */
 
-namespace Plexdata.Utilities.Exceptions.Helpers
+namespace Plexdata.Utilities.Exceptions.Tests.Extensions.Helpers
 {
-    /// <summary>
-    /// The <c>Plexdata.Utilities.Exceptions.Helpers</c> namespace contains all internal helper classes.
-    /// </summary>
-    /// <remarks>
-    /// All classes in this namespace are for internal use only and should not be used directly.
-    /// </remarks>
-    [System.Runtime.CompilerServices.CompilerGenerated]
-    class NamespaceDoc { }
+    public class CustomData : IComparable<CustomData>, IEquatable<CustomData>
+    {
+        private Boolean value;
+
+        public CustomData(Boolean value)
+        {
+            this.value = value;
+        }
+
+        public Boolean Value { get { return this.value; } }
+
+        public Int32 CompareTo(CustomData other)
+        {
+            if (other == null)
+            {
+                return 1;
+            }
+
+            if (this.value && other.value)
+            {
+                return 0;
+            }
+
+            if (this.value)
+            {
+                return 1;
+            }
+
+            return -1;
+        }
+
+        public Boolean Equals(CustomData other)
+        {
+            if (other == null)
+            {
+                return false;
+            }
+
+            return this.value == other.value;
+        }
+    }
 }

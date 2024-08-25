@@ -25,7 +25,7 @@
 namespace Plexdata.Utilities.Exceptions
 {
     /// <summary>
-    /// The <see cref="Plexdata.Utilities.Exceptions"/> namespace contains all exception classes.
+    /// The <c>Plexdata.Utilities.Exceptions</c> namespace contains all exception classes.
     /// </summary>
     /// <remarks>
     /// All classes in this namespace represent additional exception types.

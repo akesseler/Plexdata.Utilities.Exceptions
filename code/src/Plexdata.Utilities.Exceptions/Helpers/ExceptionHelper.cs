@@ -46,7 +46,7 @@ namespace Plexdata.Utilities.Exceptions.Helpers
         /// </para>
         /// <para>
         /// Every exception of type <typeparamref name="TException"/> should have a constructor 
-        /// with two strings, like <see cref="ArgumentNullException(String, String)"/> for example. 
+        /// with two strings, like <c>ArgumentNullException(String, String)</c> for example. 
         /// The first string should represent the parameter name and the second string should 
         /// represent the message text.
         /// </para>
@@ -57,7 +57,7 @@ namespace Plexdata.Utilities.Exceptions.Helpers
         /// message text.
         /// </para>
         /// <para>
-        /// A note about <see cref="ArgumentException(String, String)"/>. The values ​​of the arguments
+        /// A note about <c>ArgumentException(String, String)</c>. The values ​​of the arguments
         /// <paramref name="parameter"/> and <paramref name="message"/> are swapped automatically.
         /// </para>
         /// </remarks>
